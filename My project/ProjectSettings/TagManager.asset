@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - NeutralMonster
+  - Destroyable
+  - Undestroyable
   layers:
   - Default
   - TransparentFX
@@ -31,12 +34,12 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - EnemyTrigger
+  - Creature
+  - Obstacles
+  - Bullet
+  - AimRaycast
   m_SortingLayers:
   - name: Default
     uniqueID: 0

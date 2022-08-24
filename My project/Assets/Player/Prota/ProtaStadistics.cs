@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ProtaStadistics : MonoBehaviour
 {
-    [SerializeField] float ProtaSpeed = 10;
+    [SerializeField] float ProtaSpeed = 7;
     [SerializeField] float ProtaDamage = 5;
 
     //Otras estadísticas...

@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0fd1fe123da61245a7210458367043b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  time: 0.86
   bullet: {fileID: 6599910445686254765, guid: b3029a4f773ff4947bf25fde681e0a70, type: 3}
 --- !u!114 &5287046668213816186
 MonoBehaviour:
@@ -109,3 +110,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon1Speed: 0.75
+  weapon1Damage: 1

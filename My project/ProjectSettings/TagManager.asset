@@ -5,8 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - NeutralMonster
-  - Destroyable
   - Undestroyable
+  - NeutralMonster2
   layers:
   - Default
   - TransparentFX

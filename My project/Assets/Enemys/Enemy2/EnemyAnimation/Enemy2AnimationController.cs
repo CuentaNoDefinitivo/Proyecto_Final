@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAnimationController : MonoBehaviour
+public class Enemy2AnimationController : MonoBehaviour
 {
     Animator animator;
     private void Awake()
@@ -11,9 +11,6 @@ public class EnemyAnimationController : MonoBehaviour
     }
     void Update()
     {
-        if(EnemyMovement.Running)
-            animator.SetBool("Running", EnemyMovement.Running);
-        else
             animator.SetBool("Running", Enemy2Movement.PreyInRange);
     }
 }

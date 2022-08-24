@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Weapon2Shoot : MonoBehaviour
 {
+    [SerializeField] float time = 0.86f;
     [SerializeField] GameObject bullet;
     bool canShoot = true;
 
@@ -14,7 +15,7 @@ public class Weapon2Shoot : MonoBehaviour
         {
             Instantiate(bullet, transform.position, transform.rotation);
             canShoot = false;
-            Invoke("CanShoot",1f);
+            Invoke("CanShoot",time);
         }
     }
     void CanShoot()

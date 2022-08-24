@@ -40,7 +40,6 @@ public class EnemyMovement : MonoBehaviour
             preyDirection = Vector3.zero;
             preyDirectionIgnoreY = Vector3.zero;
         }
-        Debug.Log(Running);
     }
     private void OnTriggerStay(Collider other)
     {

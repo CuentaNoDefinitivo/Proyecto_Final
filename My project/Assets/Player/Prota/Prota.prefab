@@ -101,8 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ace94463ba3082a489d4f28896a4ebcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProtaSpeed: 10
-  ProtaDamage: 10
+  ProtaSpeed: 7
+  ProtaDamage: 5
 --- !u!1001 &8784487684935727315
 PrefabInstance:
   m_ObjectHideFlags: 0

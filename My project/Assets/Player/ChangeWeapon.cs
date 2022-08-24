@@ -5,13 +5,14 @@ using UnityEngine;
 public class ChangeWeapon : MonoBehaviour
 {
     //Cada personaje tiene dos armas. También puede cambiar a melee.
-    GameObject weapon1;
-    GameObject weapon2;
+    GameObject[] weapons;
     
     void Start()
     {
-        weapon1 = transform.GetChild(0).gameObject;
-        weapon2 = transform.GetChild(1).gameObject;
+        weapons = new GameObject[2];
+        weapons[0] = transform.GetChild(0).gameObject;
+        weapons[1] = transform.GetChild(1).gameObject;
+        weapons[1].SetActive(false);
     }
 
     
@@ -20,23 +21,23 @@ public class ChangeWeapon : MonoBehaviour
         //cambiar de arma.
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (weapon1.activeSelf)
+            if (weapons[0].activeSelf)
             {
-                weapon1.SetActive(false);
-                weapon2.SetActive(true);
+                weapons[0].SetActive(false);
+                weapons[1].SetActive(true);
             }
             else
             {
-                weapon1.SetActive(true);
-                weapon2.SetActive(false);
+                weapons[0].SetActive(true);
+                weapons[1].SetActive(false);
             }
         }
 
         //desequipar las armas, guardas las armas, o cambiar a melee
         if (Input.GetKeyDown(KeyCode.E))
         {
-            weapon1.SetActive(false);
-            weapon2.SetActive(false);
+            weapons[0].SetActive(false);
+            weapons[1].SetActive(false);
         }
     }
 }

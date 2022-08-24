@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6417279870017123205
 Transform:
   m_ObjectHideFlags: 0
@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba2cf01aa363be499d7ee33680edd5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  time: 0.86
   bullet: {fileID: 6599910445686254765, guid: 55da950f20d42764e974f271b36fe36f, type: 3}
 --- !u!114 &6417279870017123204
 MonoBehaviour:
@@ -109,3 +110,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon1Speed: 0.5
+  weapon1Damage: 1.5

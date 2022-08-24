@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerRotation : MonoBehaviour
 {
+    public static Vector3 MousePosition { get; private set; }
+
+
     LayerMask aimRaycast;
     private void Awake()
     {
@@ -16,9 +19,8 @@ public class PlayerRotation : MonoBehaviour
         Ray rayo = Camera.main.ScreenPointToRay(Input.mousePosition);
         if(Physics.Raycast(rayo,out hit,float.MaxValue,aimRaycast))
         {
-            Vector3 mousePosition = new Vector3(hit.point.x, transform.position.y, hit.point.z);
-            transform.LookAt(mousePosition);
+            MousePosition = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+            transform.LookAt(MousePosition);
         }
-        
     }
 }

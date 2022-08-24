@@ -19,6 +19,7 @@ public class Enemy2Movement : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, angleToRotate, 0.01f);
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }
+        
     }
     private void OnTriggerStay(Collider other)
     {

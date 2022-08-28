@@ -11,6 +11,6 @@ public class Enemy2AnimationController : MonoBehaviour
     }
     void Update()
     {
-            animator.SetBool("Running", Enemy2Movement.PreyInRange);
+            animator.SetBool("Running", Enemy2Movement.Running);
     }
 }

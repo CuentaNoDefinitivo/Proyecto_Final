@@ -4,23 +4,29 @@ using UnityEngine;
 
 public class BulletCollision : MonoBehaviour
 {
+    [SerializeField] float weaponDamage;
+
+
+    //public float CharacterDamage { get; set; }
+    public float CharacterDamage;
+    public void Damage(float a)
+    {
+        CharacterDamage = a;
+    }
+    
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "NeutralMonster")
-        {
-            other.transform.parent.GetComponent<Heal1Enemy>().Hp -= PlayerData.Damage;
-
-            Destroy(gameObject);
-        }
-        else if(other.transform.tag == "NeutralMonster2")
-        {
-            other.transform.parent.GetComponent<Heal2Enemy>().Hp -= PlayerData.Damage;
+        if (other.transform.tag == "NeutralMonster") 
+        { 
+            other.transform.parent.GetComponent<EnemyHp>().Hp -= weaponDamage + CharacterDamage;
 
             Destroy(gameObject);
         }
         else
             Destroy(gameObject);
     }
-
-    
+    private void Update()
+    {
+        Debug.Log(CharacterDamage);
+    }
 }

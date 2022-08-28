@@ -4,40 +4,39 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static Vector3 MovementInput { get; private set; }
+    public static bool IsMooving { get; private set; }
+    public static float WeaponSpeed { get; set; }
+
+
     CharacterController cc;
-    Vector3 inputDirection = Vector3.zero;
-    void Start()
+    ProtaStadistics ps;
+    CompanionStadistics cs;
+    float speed;
+    private void Awake()
     {
         cc = GetComponent<CharacterController>();
+        ps = transform.GetChild(1).GetComponent<ProtaStadistics>();
+        cs = transform.GetChild(2).GetComponent<CompanionStadistics>();
+        WeaponSpeed = 1;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        inputDirection = Vector3.zero;
-        if (Input.GetKey(KeyCode.W))
-        {
-            inputDirection.z++;
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            inputDirection.z--;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            inputDirection.x++;
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            inputDirection.x--;
-        }
-        
-        cc.SimpleMove(inputDirection.normalized * PlayerData.Speed);
+        MovementInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        IsMooving = false;
 
-        //detectar si está moviendo
-        if (inputDirection.magnitude != 0) 
-            PlayerData.IsMooving = true;
-        else
-            PlayerData.IsMooving = false;
+
+        if (transform.GetChild(1).gameObject.activeSelf) speed = ps.ProtaSpeed * WeaponSpeed;
+        else if (transform.GetChild(2).gameObject.activeSelf) speed = cs.CompanionSpeed * WeaponSpeed;
+
+
+
+        if (MovementInput.magnitude > 0)
+        {
+            cc.Move(MovementInput.normalized * speed * Time.deltaTime);
+            IsMooving = true;
+        }
     }
 }
+

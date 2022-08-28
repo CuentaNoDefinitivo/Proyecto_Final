@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2616991371781267458}
   - component: {fileID: 2616991371781267485}
   - component: {fileID: 2616991371781267484}
-  - component: {fileID: 2616991371781267486}
-  - component: {fileID: 2616991371781267459}
+  - component: {fileID: 2313063308352609038}
+  - component: {fileID: 7118987548193366484}
   m_Layer: 30
   m_Name: Weapon3
   m_TagString: Untagged
@@ -83,7 +83,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2616991371781267486
+--- !u!114 &2313063308352609038
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,20 +92,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 2616991371781267457}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 635ecbfa09e012c4ba3fe5beff8544d0, type: 3}
+  m_Script: {fileID: 11500000, guid: 5355dcf7dac5ab749a53816a186d730e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponSpeed: 0.6
+--- !u!114 &7118987548193366484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2616991371781267457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0fd1fe123da61245a7210458367043b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBetweenShot: 0.86
   bullet: {fileID: 6599910445686254765, guid: 436cdc88ae8ec484aa957760cdcd5b6a, type: 3}
---- !u!114 &2616991371781267459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2616991371781267457}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa423de80b718464e92723942bd7351c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon1Speed: 0.85
+  bulletCollision: {fileID: 6748627576634412632, guid: 436cdc88ae8ec484aa957760cdcd5b6a, type: 3}

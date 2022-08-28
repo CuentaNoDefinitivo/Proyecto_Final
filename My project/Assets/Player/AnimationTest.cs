@@ -13,7 +13,7 @@ public class AnimationTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        animator.SetBool("Running", PlayerData.IsMooving);
+        animator.SetBool("Running", PlayerMovement.IsMooving);
     }
     
 }

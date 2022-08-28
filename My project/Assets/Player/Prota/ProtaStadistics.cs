@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class ProtaStadistics : MonoBehaviour
 {
-    [SerializeField] float ProtaSpeed = 7;
-    [SerializeField] float ProtaDamage = 5;
+    [SerializeField] private float protaSpeed = 7;
+    [SerializeField] private float protaDamage = 5;
+
+    public float ProtaSpeed { get { return protaSpeed; } set { protaSpeed = value; } }
+    public float ProtaDamage { get => protaDamage; set => protaDamage = value; }
+
 
     //Otras estadísticas...
 
-    void Update()
-    {
-        //¿hay alguna forma de hacer que esta asignación se haga solo una vez cuando el Prota sea activado?
-        //si lo pongo en start cuando
-        //desactivo y activo el game object, la variable ya no lo asigna
-        PlayerData.CharacterSpeed = ProtaSpeed;
-        PlayerData.CharacterDamage = ProtaDamage;
-    }
 }

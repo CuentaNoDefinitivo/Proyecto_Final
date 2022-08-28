@@ -11,8 +11,8 @@ public class EnemyMovement : MonoBehaviour
     Vector3 preyPosition;
     public static bool Running { get; private set; }
     float chaseTimeCount = 0;
-    Vector3 preyDirection;
-    Vector3 preyDirectionIgnoreY;
+    //Vector3 preyDirection;
+    //Vector3 preyDirectionIgnoreY;
     bool preyInRange = false;
     
     void Update()
@@ -21,12 +21,12 @@ public class EnemyMovement : MonoBehaviour
         if (preyInRange)
         {
             chaseTimeCount += Time.deltaTime;
-            if (chaseTimeCount < chaseTime)
+            if (chaseTimeCount < chaseTime && (preyPosition - transform.position).magnitude > 0.25f)
             {
-                preyDirectionIgnoreY = new Vector3(preyDirection.x, 0, preyDirection.z).normalized;
+                //preyDirectionIgnoreY = new Vector3(preyDirection.x, 0, preyDirection.z).normalized;
                 //transform.Translate(preyDirectionIgnoreY * speed * Time.deltaTime);
                 transform.Translate(Vector3.forward * speed * Time.deltaTime);
-                transform.LookAt(new Vector3(preyPosition.x,0,preyPosition.z));
+                transform.LookAt(preyPosition);
                 Running = true;
             }
             else if (chaseTimeCount > chaseTime + restTime)
@@ -37,16 +37,16 @@ public class EnemyMovement : MonoBehaviour
         else 
         { 
             chaseTimeCount = 0; 
-            preyDirection = Vector3.zero;
-            preyDirectionIgnoreY = Vector3.zero;
+            //preyDirection = Vector3.zero;
+            //preyDirectionIgnoreY = Vector3.zero;
         }
     }
     private void OnTriggerStay(Collider other)
     {
-        if (preyInRange)
+        if (preyInRange && other.tag == "Player")
         {
-            preyPosition = other.transform.position;
-            preyDirection = (other.transform.position - transform.position).normalized;
+            preyPosition = new Vector3(other.transform.position.x, 0, other.transform.position.z);
+            //preyDirection = (other.transform.position - transform.position).normalized;
         }
     }
     private void OnTriggerEnter(Collider other)

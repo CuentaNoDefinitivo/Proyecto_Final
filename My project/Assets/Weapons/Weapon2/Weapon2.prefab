@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6417279870017123205}
   - component: {fileID: 6417279870017123202}
   - component: {fileID: 6417279870017123203}
-  - component: {fileID: 6417279870017123201}
-  - component: {fileID: 6417279870017123204}
+  - component: {fileID: 8661796521436450347}
+  - component: {fileID: 7424581009960215672}
   m_Layer: 0
   m_Name: Weapon2
   m_TagString: Untagged
@@ -83,7 +83,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6417279870017123201
+--- !u!114 &8661796521436450347
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,12 +92,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6417279870017123206}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ba2cf01aa363be499d7ee33680edd5f, type: 3}
+  m_Script: {fileID: 11500000, guid: e0fd1fe123da61245a7210458367043b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 0.86
+  timeBetweenShot: 0.86
   bullet: {fileID: 6599910445686254765, guid: 55da950f20d42764e974f271b36fe36f, type: 3}
---- !u!114 &6417279870017123204
+  bulletCollision: {fileID: 5739598713081198249, guid: 55da950f20d42764e974f271b36fe36f, type: 3}
+--- !u!114 &7424581009960215672
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,8 +107,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6417279870017123206}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 760eebd917eb9e6459e6090693358f55, type: 3}
+  m_Script: {fileID: 11500000, guid: 5355dcf7dac5ab749a53816a186d730e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon1Speed: 0.5
-  weapon1Damage: 1.5
+  weaponSpeed: 0.65

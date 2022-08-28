@@ -10,23 +10,26 @@ public class ChangeWeapon : MonoBehaviour
     void Start()
     {
         weapons = new GameObject[2];
-        weapons[0] = transform.GetChild(0).gameObject;
-        weapons[1] = transform.GetChild(1).gameObject;
-        weapons[1].SetActive(false);
+        if (transform.childCount == 2)
+        {
+            weapons[0] = transform.GetChild(0).gameObject;
+            weapons[1] = transform.GetChild(1).gameObject;
+            weapons[1].SetActive(false);
+        }
     }
 
     
     void Update()
     {
         //cambiar de arma.
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && weapons[0] != null && weapons[1] != null)
         {
             if (weapons[0].activeSelf)
             {
                 weapons[0].SetActive(false);
                 weapons[1].SetActive(true);
             }
-            else
+            else if (weapons[1].activeSelf)
             {
                 weapons[0].SetActive(true);
                 weapons[1].SetActive(false);

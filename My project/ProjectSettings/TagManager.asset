@@ -4,9 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - NeutralMonster
   - Undestroyable
-  - NeutralMonster2
+  - NeutralMonster
+  - Prota
+  - Companion
+  - Companion2Dagge
   layers:
   - Default
   - TransparentFX
@@ -34,7 +36,7 @@ TagManager:
   - 
   - 
   - 
-  - Player
+  - 
   - EnemyTrigger
   - Creature
   - Obstacles

@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5755412965496744162}
   - component: {fileID: 5755412965496744175}
   - component: {fileID: 5755412965496744172}
-  - component: {fileID: 5755412965496744174}
-  - component: {fileID: 5755412965496744173}
+  - component: {fileID: -7975138096906367505}
+  - component: {fileID: -3431456387900701971}
   m_Layer: 30
   m_Name: Weapon4
   m_TagString: Untagged
@@ -83,7 +83,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5755412965496744174
+--- !u!114 &-7975138096906367505
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,11 +92,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5755412965496744163}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cd757453db28194595ca9a0f13349f0, type: 3}
+  m_Script: {fileID: 11500000, guid: e0fd1fe123da61245a7210458367043b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeBetweenShot: 0.86
   bullet: {fileID: 6599910445686254765, guid: ff7363ebe25fb4e4b913c58ab89b138a, type: 3}
---- !u!114 &5755412965496744173
+  bulletCollision: {fileID: 2382483921370314714, guid: ff7363ebe25fb4e4b913c58ab89b138a, type: 3}
+--- !u!114 &-3431456387900701971
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,7 +107,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5755412965496744163}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 985645502fedee245b8612cbd093d90b, type: 3}
+  m_Script: {fileID: 11500000, guid: 5355dcf7dac5ab749a53816a186d730e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon1Speed: 0.85
+  weaponSpeed: 0.55

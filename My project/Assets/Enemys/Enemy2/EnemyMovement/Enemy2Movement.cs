@@ -7,17 +7,20 @@ public class Enemy2Movement : MonoBehaviour
     [SerializeField] float speed = 4f;
 
 
+    public static bool Running { get; private set; }
     Vector3 preyPosition;
-    public static bool PreyInRange { get; private set; }
+    bool preyInRange;
     Quaternion angleToRotate;
 
     void Update()
     {
-        if (PreyInRange)
+        Running = false;
+        if (preyInRange && (preyPosition - transform.position).magnitude > 0.2)
         {
             angleToRotate = Quaternion.LookRotation(preyPosition - new Vector3(transform.position.x, 0, transform.position.z));
             transform.rotation = Quaternion.Lerp(transform.rotation, angleToRotate, 0.01f);
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            Running = true;
         }
         
     }
@@ -30,10 +33,10 @@ public class Enemy2Movement : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player") PreyInRange = true;
+        if (other.tag == "Player") preyInRange = true;
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player") PreyInRange = false;
+        if (other.tag == "Player") preyInRange = false;
     }
 }

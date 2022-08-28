@@ -6,25 +6,31 @@ public class ChangeCharacters : MonoBehaviour
 {
     [SerializeField] float changeCooldown = 6f;
 
-    //mi idea de este juego es que el jugador controle dos personajes a la vez, el prota es con el que se identifica, y el acompañante es como el compañero.
-    //en un instante solo puede controlar un personaje pero con los controles puede cambiar a otro personaje, y cada personaje tendrá sus propias estadísticas.
-    //el prota y el acompañante son hijos del player, así al mover el player, los hijos o sea prota y acompañante moverán de la misma manera.
+    public static bool ProtaAlive { get; set; }
+    public static bool CompanionAlive { get; set; }
     GameObject[] characters;
-
     bool canChange = true;
+
     void Start()
     {
         characters = new GameObject[2];
 
-        characters[0] = gameObject.transform.GetChild(0).gameObject;//prota
-        characters[1] = gameObject.transform.GetChild(1).gameObject;//companion
-        characters[1].SetActive(false);
+        characters[0] = transform.GetChild(1).gameObject;//prota
+        ProtaAlive = true;
+
+        if (transform.childCount == 3)
+        {
+            characters[1] = transform.GetChild(2).gameObject;//companion
+            characters[1].SetActive(false);
+            CompanionAlive = true;
+        }
+        else CompanionAlive = false;
     }
 
     void Update()
     {
         //cambiar personajes con una tecla.
-        if (Input.GetKeyDown(KeyCode.Tab) && canChange)
+        if (Input.GetKeyDown(KeyCode.Tab) && canChange && ProtaAlive && CompanionAlive)
         {
             if (characters[0].activeInHierarchy)//¿que diferencia hay entre activeIHierarchy y activeSelf?
             {
@@ -38,6 +44,21 @@ public class ChangeCharacters : MonoBehaviour
             }
             canChange = false;
             Invoke("CanChange", changeCooldown);
+        }
+
+        //si se muere un personaje cambiar al otro
+        if (ProtaAlive == false && CompanionAlive)
+        {
+            characters[1].SetActive(true);
+        }
+        else if (ProtaAlive && CompanionAlive == false)
+        {
+            characters[0].SetActive(true);
+        }
+        else if (!ProtaAlive && !CompanionAlive)
+        {
+            Debug.Log("Game Over");
+            DestroyImmediate(gameObject);
         }
     }
     private void CanChange()

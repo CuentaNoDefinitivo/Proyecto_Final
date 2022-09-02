@@ -13,7 +13,7 @@ public class EnemyDamage : MonoBehaviour
     {
         if (other.transform.tag == "Prota")
         {
-            other.transform.GetComponent<ProtaHp>().hp -= damage;
+            other.transform.GetComponent<ProtaHp>().Hp -= damage;
         }
         else if (other.transform.tag == "Companion")
         {
@@ -25,7 +25,7 @@ public class EnemyDamage : MonoBehaviour
     {
         if (other.transform.tag == "Prota" && damageTime >= 1)
         {
-            other.transform.GetComponent<ProtaHp>().hp -= damage;
+            other.transform.GetComponent<ProtaHp>().Hp -= damage;
             damageTime = 0;
             Debug.Log("-hp stay");
         }

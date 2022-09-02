@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class PlayerRotation : MonoBehaviour
 {
-    public static Vector3 MousePosition { get; private set; }
-
+    public Vector3 MousePosition { get; private set; }
+    public bool CanRotate { get; set; }
 
     LayerMask aimRaycast;
     private void Awake()
     {
+        CanRotate = true;
         aimRaycast = LayerMask.GetMask("AimRaycast");
     }
     // Update is called once per frame
@@ -20,7 +21,7 @@ public class PlayerRotation : MonoBehaviour
         if(Physics.Raycast(rayo,out hit,float.MaxValue,aimRaycast))
         {
             MousePosition = new Vector3(hit.point.x, transform.position.y, hit.point.z);
-            transform.LookAt(MousePosition);
+            if(CanRotate) transform.LookAt(MousePosition);
         }
     }
 }

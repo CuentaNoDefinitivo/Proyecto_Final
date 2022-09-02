@@ -24,15 +24,15 @@ public class ChangeWeapon : MonoBehaviour
         //cambiar de arma.
         if (Input.GetKeyDown(KeyCode.Q) && weapons[0] != null && weapons[1] != null)
         {
-            if (weapons[0].activeSelf)
-            {
-                weapons[0].SetActive(false);
-                weapons[1].SetActive(true);
-            }
-            else if (weapons[1].activeSelf)
+            if (!weapons[0].activeSelf)
             {
                 weapons[0].SetActive(true);
                 weapons[1].SetActive(false);
+            }
+            else
+            {
+                weapons[0].SetActive(false);
+                weapons[1].SetActive(true);
             }
         }
 

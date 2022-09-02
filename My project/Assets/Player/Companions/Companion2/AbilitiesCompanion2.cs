@@ -5,7 +5,9 @@ using UnityEngine;
 public class AbilitiesCompanion2 : MonoBehaviour
 {
     [SerializeField] GameObject knife;
-    List<Transform> listKnife;
+    //[SerializeField] DaggeTrigger daggeTrigger;
+    //[SerializeField] KnifeMovement knifeMovement;
+    List<Transform> _daggerList;
     bool habilidad2Active = false;
     float numDaggeReturned;
 
@@ -13,7 +15,7 @@ public class AbilitiesCompanion2 : MonoBehaviour
 
     private void Start()
     {
-        listKnife = new List<Transform>();
+        _daggerList = new List<Transform>();
     }
     void Update()
     {
@@ -22,13 +24,13 @@ public class AbilitiesCompanion2 : MonoBehaviour
         if (habilidad2Active) Ability2();
 
         //empezar a contar tiempo si la lista de daga no está vacía
-        if (listKnife.Count != 0)   destroyDaggeTime += Time.deltaTime;
+        if (_daggerList.Count != 0)   destroyDaggeTime += Time.deltaTime;
         else    destroyDaggeTime = 0;
         // si ya contado hasta diez destruir la primera daga y resetear el contador.
         if (destroyDaggeTime >= 10)
         {
-            Destroy(listKnife[0].gameObject);
-            listKnife.RemoveAt(0);
+            Destroy(_daggerList[0].gameObject);
+            _daggerList.RemoveAt(0);
             destroyDaggeTime = 0;
         }
 
@@ -37,26 +39,28 @@ public class AbilitiesCompanion2 : MonoBehaviour
     void Ability1()
     {
         var newKnife = Instantiate(knife,transform.position, transform.rotation);
-        listKnife.Add(newKnife.transform);
+        //_daggerList = knifeMovement.daggerListReference;
+        newKnife.GetComponent<DaggeTrigger>().CharacterDamage = GetComponentInParent<CompanionStadistics>().CompanionDamage;
+        _daggerList.Add(newKnife.transform);
     }
     void Ability2()
     {
         //mover todas las dagas
-        foreach(Transform knife in listKnife)
+        foreach(Transform knife in _daggerList)
         {
             knife.transform.position += (transform.position - knife.transform.position).normalized * 40 * Time.deltaTime;
             knife.transform.LookAt(transform);
         }
 
-        if(numDaggeReturned == listKnife.Count)//si num de daga vuelto es igual que num de dagas.
+        if(numDaggeReturned == _daggerList.Count)//si num de daga vuelto es igual que num de dagas.
         {
             //destruye todas las dagas
-            foreach(Transform knife in listKnife)
+            foreach(Transform knife in _daggerList)
             {
                 DestroyImmediate(knife.gameObject);
             }
             //resetear todas las variables
-            listKnife.Clear();
+            _daggerList.Clear();
             habilidad2Active = false;
             numDaggeReturned = 0;
         }

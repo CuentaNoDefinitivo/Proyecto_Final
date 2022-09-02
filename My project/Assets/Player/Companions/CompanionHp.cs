@@ -1,20 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CompanionHp : MonoBehaviour
 {
-    [SerializeField] float companionHp;
-    public float Hp { get; set; }
+    [SerializeField] float maxHp;
+    float hp;
+    public float Hp { get { return hp; } set { hp = Mathf.Clamp(value,0,MaxHp); } }
+    public float MaxHp { get => maxHp; set => maxHp = value; }
+
     void Start()
     {
-        Hp = companionHp;
+        hp = maxHp;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Hp <= 0)
+        if (hp <= 0)
         {
             ChangeCharacters.CompanionAlive = false;
             gameObject.SetActive(false);

@@ -9,6 +9,7 @@ TagManager:
   - Prota
   - Companion
   - Companion2Dagge
+  - Bullet
   layers:
   - Default
   - TransparentFX

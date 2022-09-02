@@ -56,6 +56,10 @@ public class EnemyMovement : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")  preyInRange = false;
+        if (other.tag == "Player")
+        {
+            preyInRange = false;
+            chaseTimeCount = 0;
+        }
     }
 }

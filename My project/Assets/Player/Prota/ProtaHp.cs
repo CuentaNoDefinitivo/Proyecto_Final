@@ -1,12 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class ProtaHp : MonoBehaviour
 {
-    public float hp = 30;
 
-    // Update is called once per frame
+    [SerializeField]private float maxHp = 30;
+    private float hp;
+
+    public float Hp { get { return hp; }  set { hp = Mathf.Clamp(value, 0, maxHp); } }
+    public float MaxHp { get => maxHp; set => maxHp = value; }
+    private void Start()
+    {
+        hp = maxHp;
+    }
     void Update()
     {
         if (hp <= 0)

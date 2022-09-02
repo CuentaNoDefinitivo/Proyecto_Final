@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class BulletCollision : MonoBehaviour
 {
+
     [SerializeField] float weaponDamage;
 
 
-    //public float CharacterDamage { get; set; }
-    public float CharacterDamage;
+    public float CharacterDamage { get; set; }
+    /*public float CharacterDamage;
     public void Damage(float a)
     {
         CharacterDamage = a;
-    }
+    }*/
     
     private void OnTriggerEnter(Collider other)
     {
@@ -27,6 +28,6 @@ public class BulletCollision : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(CharacterDamage);
+        
     }
 }

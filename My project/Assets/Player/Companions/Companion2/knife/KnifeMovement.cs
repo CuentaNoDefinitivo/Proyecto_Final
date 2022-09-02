@@ -6,15 +6,16 @@ public class KnifeMovement : MonoBehaviour
 {
     [SerializeField] float maxFlightTime = 0.3f;
     [SerializeField] float speed = 30;
-    //[SerializeField] float destroyTime = 10;
 
+
+    //public List<Transform> daggerListReference;
 
     float time = 0;
     float fallingSpeed = 5;
 
     private void Start()
     {
-        //Destroy(gameObject, destroyTime);
+        //Invoke("DestroyDagge", 2f);
     }
     void Update()
     {
@@ -33,4 +34,9 @@ public class KnifeMovement : MonoBehaviour
             else DestroyImmediate(this);
         }
     }
+    /*void DestroyDagge()
+    {
+        Destroy(gameObject);
+        daggerListReference.RemoveAt(0);
+    }*/
 }

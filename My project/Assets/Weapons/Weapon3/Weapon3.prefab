@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2616991371781267458}
   - component: {fileID: 2616991371781267485}
   - component: {fileID: 2616991371781267484}
+  - component: {fileID: -5294270713648679116}
   - component: {fileID: 2313063308352609038}
   - component: {fileID: 7118987548193366484}
   m_Layer: 30
@@ -83,6 +84,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-5294270713648679116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2616991371781267457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15eb450b39d9aef498f5ee7ca95d2910, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSprite: {fileID: 21300000, guid: 630dd4079be106a4ba74368d71d61a9d, type: 3}
 --- !u!114 &2313063308352609038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0fd1fe123da61245a7210458367043b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenShot: 0.86
+  timeBetweenShot: 0.85
   bullet: {fileID: 6599910445686254765, guid: 436cdc88ae8ec484aa957760cdcd5b6a, type: 3}
-  bulletCollision: {fileID: 6748627576634412632, guid: 436cdc88ae8ec484aa957760cdcd5b6a, type: 3}
+  munitions: 4
+  reloadTime: 5

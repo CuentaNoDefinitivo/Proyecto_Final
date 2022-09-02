@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 562830416671917977}
   - component: {fileID: 145902505658830189}
   - component: {fileID: 7479370098905412150}
+  - component: {fileID: 522031266128300998}
   m_Layer: 27
   m_Name: Enemy2
   m_TagString: NeutralMonster
@@ -91,6 +92,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!65 &522031266128300998
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3920660378854631435}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.54738045, y: 1.7472306, z: 0.62795115}
+  m_Center: {x: -0.011328697, y: 0.90071374, z: 0.057700872}
 --- !u!1 &3920660379470846013
 GameObject:
   m_ObjectHideFlags: 0

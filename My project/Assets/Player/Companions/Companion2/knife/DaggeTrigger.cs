@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DaggeTrigger : MonoBehaviour
 {
-    [SerializeField] float daggerDamage = 4.5f;
+    //[SerializeField] float daggerDamage = 4.5f;
 
 
     public float CharacterDamage { get; set; }
@@ -17,7 +17,7 @@ public class DaggeTrigger : MonoBehaviour
     {
         if (other.transform.tag == "NeutralMonster")
         {
-            other.transform.parent.GetComponent<EnemyHp>().Hp -= daggerDamage + CharacterDamage;
+            //other.transform.parent.GetComponent<EnemyHp>().Hp -= daggerDamage + CharacterDamage;
         }
     }
     private void Update()

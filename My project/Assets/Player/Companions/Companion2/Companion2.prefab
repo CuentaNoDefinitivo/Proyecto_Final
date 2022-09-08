@@ -9,16 +9,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6141170846719154006}
-  - component: {fileID: 2075394735480063204}
   - component: {fileID: 1495168043053073143}
-  - component: {fileID: 7618702699469834681}
+  - component: {fileID: 575705260161493881}
   m_Layer: 0
   m_Name: Companion2
   m_TagString: Companion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6141170846719154006
 Transform:
   m_ObjectHideFlags: 0
@@ -35,19 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2075394735480063204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6141170846719154001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc79251e60052ad40a446b77f664ac34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHp: 20
 --- !u!136 &1495168043053073143
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -62,7 +48,7 @@ CapsuleCollider:
   m_Height: 1.81
   m_Direction: 1
   m_Center: {x: 0, y: -0.1, z: 0}
---- !u!114 &7618702699469834681
+--- !u!114 &575705260161493881
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,11 +57,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6141170846719154001}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0104fa5487712c45a249db088b3a612, type: 3}
+  m_Script: {fileID: 11500000, guid: 029d54ceed1066a4d8f65d07558c17fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  companionSpeed: 10
-  companionDamage: 7
+  characterStadistics: {fileID: 11400000, guid: b172f75f0d74a9848958166b23536e29, type: 2}
 --- !u!1 &8834344268266623879
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,6 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knife: {fileID: 214153790076077444, guid: aee476278a7c87343a0ef1f3d92e1e48, type: 3}
+  companion2Stadistics: {fileID: 0}
 --- !u!1001 &6141170847420667622
 PrefabInstance:
   m_ObjectHideFlags: 0

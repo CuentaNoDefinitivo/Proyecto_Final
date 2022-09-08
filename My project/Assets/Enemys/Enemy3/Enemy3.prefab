@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 785074738323801974}
   - component: {fileID: 785074738323801973}
   - component: {fileID: 785074738323801972}
-  - component: {fileID: 785074738323801975}
   - component: {fileID: 785074738323801971}
   - component: {fileID: 785074738323801970}
   - component: {fileID: 487365065161938181}
@@ -67,19 +66,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &785074738323801975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 785074738323801969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 921c3665a4859c54fbbdf5cab594cc47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyHp: 20
 --- !u!195 &785074738323801971
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -137,7 +123,6 @@ GameObject:
   m_Component:
   - component: {fileID: 785074739550192015}
   - component: {fileID: 785074739550192000}
-  - component: {fileID: 785074739550192001}
   m_Layer: 28
   m_Name: Cube
   m_TagString: NeutralMonster
@@ -172,19 +157,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &785074739550192001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 785074739550192014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36dc086849b4c3845b2bdd375205defc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
 --- !u!1001 &785074738004321859
 PrefabInstance:
   m_ObjectHideFlags: 0

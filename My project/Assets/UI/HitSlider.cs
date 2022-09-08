@@ -5,47 +5,18 @@ using UnityEngine.UI;
 
 public class HitSlider : MonoBehaviour
 {
-    Slider healSlider;
-    Slider slider;
-    float currentValue;
-    float healValue;
-    bool invoked = false;
+    [SerializeField]Image HpBar;
+    [SerializeField]Image HitBar;
 
-    void Start()
-    {
-        healSlider = transform.parent.GetComponent<Slider>();
-        slider = GetComponent<Slider>();
-        slider.maxValue = healSlider.maxValue;
-        currentValue = healSlider.value;
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        slider.maxValue = healSlider.maxValue;
-        healValue = healSlider.value;
-        if (healValue < currentValue)
+        if (HpBar.fillAmount < HitBar.fillAmount)
         {
-            LerpToHealValue();
-            if (!invoked) 
-            { 
-                Invoke("CurrentValueToHealValue", 6f); 
-                invoked = true; 
-            }
+            HitBar.fillAmount = Mathf.Lerp(HitBar.fillAmount, HpBar.fillAmount, 1f * Time.deltaTime);
         }
-        else {
-            currentValue = healValue;
-            slider.value = currentValue;
+        if (HpBar.fillAmount >= HitBar.fillAmount || Mathf.Round(HpBar.fillAmount * 100) == Mathf.Round(HitBar.fillAmount * 100))
+        {
+            HitBar.fillAmount = HpBar.fillAmount;
         }
-    }
-    void LerpToHealValue()
-    {
-        currentValue = Mathf.Lerp(currentValue, healValue, 0.01f);
-        slider.value = currentValue;
-    }
-    void CurrentValueToHealValue()
-    {
-        currentValue = healValue;
-        invoked = false;
     }
 }

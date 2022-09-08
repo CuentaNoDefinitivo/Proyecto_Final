@@ -5,12 +5,10 @@ using UnityEngine;
 public class AbilitiesCompanion2 : MonoBehaviour
 {
     [SerializeField] GameObject knife;
-    //[SerializeField] DaggeTrigger daggeTrigger;
-    //[SerializeField] KnifeMovement knifeMovement;
     List<Transform> _daggerList;
     bool habilidad2Active = false;
     float numDaggeReturned;
-
+    [SerializeField] CharacterStadistic companion2Stadistics;
     float destroyDaggeTime = 0;
 
     private void Start()
@@ -40,7 +38,7 @@ public class AbilitiesCompanion2 : MonoBehaviour
     {
         var newKnife = Instantiate(knife,transform.position, transform.rotation);
         //_daggerList = knifeMovement.daggerListReference;
-        newKnife.GetComponent<DaggeTrigger>().CharacterDamage = GetComponentInParent<CompanionStadistics>().CompanionDamage;
+        newKnife.GetComponent<DaggeTrigger>().CharacterDamage = companion2Stadistics.Damage;
         _daggerList.Add(newKnife.transform);
     }
     void Ability2()

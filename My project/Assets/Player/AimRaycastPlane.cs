@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class AimRaycastPlane : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void LateUpdate()
     {
         transform.rotation = Quaternion.Euler(0,0,0);

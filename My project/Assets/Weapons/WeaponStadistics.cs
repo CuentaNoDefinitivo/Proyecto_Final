@@ -2,13 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponStadistics : MonoBehaviour
+[CreateAssetMenu (fileName = "NewWeaponStadistics", menuName = "Weapons/NewWeaponStadistics")]
+public class WeaponStadistics : ScriptableObject
 {
-    [SerializeField] float weaponSpeed = 0.5f;
+    [SerializeField] float speed;
+    [SerializeField] float damage;
+    [SerializeField] float munition;
+    [SerializeField] float reloadTime;
+    [SerializeField] float bulletLifeTime;
+    [SerializeField] float bulletSpeed;
 
-
-    void Update()
-    {
-        PlayerMovement.WeaponSpeed = weaponSpeed;
-    }
+    public float Speed { get => speed;}
+    public float Damage { get => damage;}
+    public float Munition { get => munition;}
+    public float ReloadTime { get => reloadTime;}
+    public float BulletLifeTime { get => bulletLifeTime;}
+    public float BulletSpeed { get => bulletSpeed;}
 }

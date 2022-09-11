@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class ButtonManager : MonoBehaviour
 {
-
+    public UnityEvent BackButton;
     public void OnBackButtonClicked()
     {
-        SceneManager.LoadScene(0);
+        BackButton.Invoke();
     }
 }

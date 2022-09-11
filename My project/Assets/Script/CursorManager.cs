@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class CursorManager : MonoBehaviour
 {
-    [SerializeField] Texture2D cursorTexture2D;
-    [SerializeField] Vector2 ofset;
     void Start()
     {
-        Cursor.SetCursor(cursorTexture2D,ofset,CursorMode.Auto);
+        if(Cursor.visible) Cursor.visible = false;
     }
 }

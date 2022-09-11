@@ -8,9 +8,23 @@ public class SettingsManager : MonoBehaviour
     public float Brightness { get { return brightness; } set { brightness = value; } }
 
 
-
     private bool fullScreen = false;
     public bool FullScreen { get => fullScreen; set => fullScreen = value; }
+
+
+
+
+    private Color crosshairColor = Color.white;
+    public Color CrosshairColor { get { return crosshairColor; } set { crosshairColor = value; } }
+
+
+    private Color reloadCrosshairColor = Color.yellow;
+    public Color ReloadCrosshairColor { get { return reloadCrosshairColor; } set { reloadCrosshairColor = value; } }
+
+
+    private Color noMunitionCrosshairColor = Color.black;
+    public Color NoMunitionCrosshairColor { get { return noMunitionCrosshairColor; } set { noMunitionCrosshairColor = value; } }
+
 
     private void Update()
     {

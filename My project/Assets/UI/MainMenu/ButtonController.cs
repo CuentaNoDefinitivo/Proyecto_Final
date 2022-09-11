@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class ButtonController : MonoBehaviour
 {
+    [SerializeField]public UnityEvent StartButtonEvents;
+    [SerializeField]public UnityEvent SettingsButtonEvent;
     public void OnStartButtonClicked()
     {
-        SceneManager.LoadScene(1);
+        StartButtonEvents?.Invoke();
     }
-    public void OnSettingstButtonClicked()
+    public void OnSettingsButtonClicked()
     {
-        SceneManager.LoadScene(2);
+        SettingsButtonEvent?.Invoke();
     }
 }

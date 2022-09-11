@@ -10,7 +10,6 @@ public class NormalNeutralMonsterStadistics : ScriptableObject
     [SerializeField] float atackSpeed;
     [SerializeField] float hp;
     [SerializeField] float perceiveArea;
-    [SerializeField] float perceiveSpeed = 35f;
     [SerializeField] GameObject[] drops = { };
 
     public float Speed { get => speed; }
@@ -18,6 +17,5 @@ public class NormalNeutralMonsterStadistics : ScriptableObject
     public float AtackSpeed { get => atackSpeed; }
     public float Hp { get => hp; }
     public float PerceiveArea { get => perceiveArea; }
-    public float PerceiveSpeed { get => perceiveSpeed; }
     public GameObject[] Drops { get => drops; }
 }

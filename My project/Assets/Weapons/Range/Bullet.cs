@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
         if (other.tag == "NeutralMonster")
         {
             Debug.Log("characterDamage " + CharacterStadistic.Damage + " weaponDamage " + bulletStadistics.Damage);
-            other.GetComponent<EnemyHp>().Hp -= CharacterStadistic.Damage + bulletStadistics.Damage;
+            other.GetComponent<Enemies>().Hp -= CharacterStadistic.Damage + bulletStadistics.Damage;
             Destroy(gameObject);
         }
         else Destroy(gameObject);

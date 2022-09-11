@@ -26,8 +26,8 @@ public class ChangeWeapons : MonoBehaviour
             }
             else if (!transform.GetChild(0).gameObject.activeSelf)
             {
-                transform.GetChild(0).gameObject.SetActive(true);
                 transform.GetChild(1).gameObject.SetActive(false);
+                transform.GetChild(0).gameObject.SetActive(true);
                 melee.SetActive(false);
             }
         }

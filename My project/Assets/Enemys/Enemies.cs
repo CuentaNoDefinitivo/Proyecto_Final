@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class Enemies : MonoBehaviour
 {
+    public float Hp { get; set; }
     [SerializeField] protected NormalNeutralMonsterStadistics monsterStadistics;
     [SerializeField] protected LayerMask enemyDetectionLayer;
     protected bool preyInArea = false;
@@ -43,7 +44,7 @@ public class Enemies : MonoBehaviour
     protected virtual void PerceivePrey() // un raycastGirando
     {
         //aumentar el angulo cuando pasa el tiempo
-        rayRotateAngle += Time.deltaTime * monsterStadistics.PerceiveSpeed;
+        rayRotateAngle += Time.deltaTime * 50f;
         Ray perceivePreyRay = new Ray(transform.position + Vector3.up, new Vector3(Mathf.Sin(rayRotateAngle), 0, Mathf.Cos(rayRotateAngle)));
         if (Physics.Raycast(perceivePreyRay, out hit, monsterStadistics.PerceiveArea, enemyDetectionLayer)) 
         {
@@ -52,16 +53,24 @@ public class Enemies : MonoBehaviour
                 CancelInvoke("ResetPreyInArea");
                 preyInArea = true;
                 preyPosition = hit.point;
-                Invoke("ResetPreyInArea", 2.3f);
             }
         }
+        if(!Physics.Raycast(perceivePreyRay, out hit, monsterStadistics.PerceiveArea, enemyDetectionLayer) || !hit.transform.CompareTag("Player"))   Invoke("ResetPreyInArea", 2.3f);
+
+
         //dibujar raycast
         Debug.DrawRay(transform.position + Vector3.up, new Vector3(Mathf.Sin(rayRotateAngle) * monsterStadistics.PerceiveArea, 0, Mathf.Cos(rayRotateAngle) * monsterStadistics.PerceiveArea),Color.red);
-        //prevenir que el angulo se pase del float
-        if (rayRotateAngle >= 360)  rayRotateAngle = 0; 
+
+
+        //prevenir que el angulo se pase del float.MaxValue
+        if (rayRotateAngle > 360)  rayRotateAngle = 0; 
     }
     void ResetPreyInArea()
     {
         preyInArea = false;
+    }
+    protected virtual void Death()
+    {
+        DestroyImmediate(gameObject);
     }
 }

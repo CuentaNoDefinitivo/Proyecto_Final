@@ -1,13 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class RangeWeapons : MonoBehaviour
 {
+    //Weapon Events
+    public static event Action Reloading;
+    public static event Action<float, float> ReloadingCount;
+    public static event Action StopReloading;
+
+    public static event Action<int,int> MunitionCount;
+
     [SerializeField] protected WeaponStadistics rangeWeaponStadistics;
     [SerializeField] GameObject bullet;
     CharacterStadistic characterStadistics;
-    protected float munitionCount;
+    protected int munitionCount;
+    protected float reloadTimeCount;
     protected void Shot()
     {
         var bulletInstance = Instantiate(bullet,transform.position,transform.rotation);
@@ -18,8 +27,30 @@ public class RangeWeapons : MonoBehaviour
     {
         characterStadistics = GetComponentInParent<SetCharacterStadistics>().CharacterStadistic;
     }
-    private void OnEnable()
+    protected void SetWeaponsStadistics()
     {
         transform.parent.parent.parent.GetComponent<Player>().WeaponStadistics = rangeWeaponStadistics;
+    }
+    protected void Reload()
+    {
+        reloadTimeCount += Time.deltaTime;
+        Reloading?.Invoke();
+        ReloadingCount?.Invoke(Mathf.Round(reloadTimeCount * 10)/10, rangeWeaponStadistics.ReloadTime);
+        if (reloadTimeCount >= rangeWeaponStadistics.ReloadTime)
+        {
+            munitionCount = rangeWeaponStadistics.Munition;
+            InvokeMunitionCount(munitionCount, rangeWeaponStadistics.Munition);
+            reloadTimeCount = 0;
+        }
+    }
+
+    protected void InvokeMunitionCount(int munitionCount, int munition)
+    {
+        MunitionCount?.Invoke(munitionCount, munition);
+    }
+
+    protected void InvokeStopReloading()
+    {
+        StopReloading?.Invoke();
     }
 }

@@ -142,6 +142,7 @@ public class Player : MonoBehaviour
         if (haveCompanion) companionAlive = true;
         companion.SetActive(true);
         prota.GetComponent<SetCharacterStadistics>().Respawn();
+        transform.position = Respawner.position;
         InvokeRespawn = false;
     }
 }

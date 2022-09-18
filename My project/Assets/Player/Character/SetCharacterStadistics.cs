@@ -52,6 +52,8 @@ public class SetCharacterStadistics : MonoBehaviour
             {
                 transform.parent.GetComponent<Player>().protaAlive = false;
                 transform.GetChild(0).gameObject.SetActive(false);
+                GetComponentInChildren<PlayerWeaponManager>().UnequipWeapon(0);
+                GetComponentInChildren<PlayerWeaponManager>().UnequipWeapon(1);
             }
             else
                 transform.parent.GetComponent<Player>().companionAlive = false;
@@ -74,6 +76,11 @@ public class SetCharacterStadistics : MonoBehaviour
     {
         Hp = characterStadistics.MaxHp;
         transform.GetChild(0).gameObject.SetActive(true);
+        HpChanged.Invoke();
+    }
+    public void Heal(float hp)
+    {
+        Hp = Mathf.Clamp(Hp + hp, 0, characterStadistics.MaxHp);
         HpChanged.Invoke();
     }
 }

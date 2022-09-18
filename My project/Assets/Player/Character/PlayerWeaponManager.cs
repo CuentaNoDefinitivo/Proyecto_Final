@@ -120,7 +120,7 @@ public class PlayerWeaponManager : MonoBehaviour
         GetComponentInParent<SetAdcCharacterStadistics>().SetWeapon2Image(weaponSprite);
     }
 
-    void UnequipWeapon(int weapon)
+    public void UnequipWeapon(int weapon)
     {
         if (weapon == 0)
         {

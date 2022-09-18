@@ -15,7 +15,7 @@ public class EnemyRespawn : MonoBehaviour
     {
         foreach(GameObject enemy in enemiesToRespawn)
         {
-            Instantiate(enemy).GetComponent<Enemies>().spawner = this.gameObject;
+            Instantiate(enemy,transform.position,transform.rotation).GetComponent<Enemies>().spawner = this.gameObject;
             enemyCount++;
         }
     }

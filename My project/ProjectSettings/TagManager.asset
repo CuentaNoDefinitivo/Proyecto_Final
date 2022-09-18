@@ -12,6 +12,10 @@ TagManager:
   - Bullet
   - HpHUD
   - MpHUD
+  - MainCanvas
+  - Weapon1
+  - Weapon2
+  - Hand
   layers:
   - Default
   - TransparentFX
@@ -37,9 +41,9 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - Drops
+  - PostProcessing
+  - Character
   - Player
   - Creature
   - Obstacles

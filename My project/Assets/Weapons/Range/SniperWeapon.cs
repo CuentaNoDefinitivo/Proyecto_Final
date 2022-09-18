@@ -12,6 +12,8 @@ public class SniperWeapon : RangeWeapons
         munitionCount = rangeWeaponStadistics.Munition;
         GetCharacterDamage();
         InvokeMunitionCount(munitionCount, rangeWeaponStadistics.Munition);
+
+        InvokeSetCrosshairType(true);
     }
     private void Update()
     {
@@ -29,7 +31,7 @@ public class SniperWeapon : RangeWeapons
             reloadTimeCount = 0;
             InvokeStopReloading();
 
-            InvokeMunitionCount(munitionCount,rangeWeaponStadistics.Munition);
+            InvokeMunitionCount(munitionCount, rangeWeaponStadistics.Munition);
         }
 
         //Reload.
@@ -49,9 +51,8 @@ public class SniperWeapon : RangeWeapons
     }
     private void OnEnable()
     {
-        SetWeaponsStadistics();
-
         InvokeStopReloading();
+        InvokeSetCrosshairType(true);
         InvokeMunitionCount(munitionCount, rangeWeaponStadistics.Munition);
     }
     void OnDisable() 

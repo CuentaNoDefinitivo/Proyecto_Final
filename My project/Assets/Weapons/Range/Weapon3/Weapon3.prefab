@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2616991371781267485}
   - component: {fileID: 2616991371781267484}
   - component: {fileID: 8987573409341361828}
+  - component: {fileID: 1039919103}
   m_Layer: 30
   m_Name: Weapon3
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2616991371781267457}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.37, z: 0.721}
+  m_LocalPosition: {x: 0, y: 0, z: 0.721}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -94,5 +95,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1bd5c3cde998a84c8e763b94c3e6630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangeWeaponStadistics: {fileID: 11400000, guid: 47814600170bd184fa7ddc19332d07af, type: 2}
+  weaponStadistics: {fileID: 11400000, guid: 9a344c2d1d8369e42820527081b15945, type: 2}
+  rangeWeaponStadistics: {fileID: 11400000, guid: 9a344c2d1d8369e42820527081b15945, type: 2}
   bullet: {fileID: 6599910445686254765, guid: 436cdc88ae8ec484aa957760cdcd5b6a, type: 3}
+--- !u!95 &1039919103
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2616991371781267457}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ea2b8bc2d4934fa46b1fe65ec4bb05b1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

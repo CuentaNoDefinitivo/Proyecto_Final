@@ -9,8 +9,7 @@ public class EnemyAtackTrigger : MonoBehaviour
     {
         if(other.tag == "Prota" || other.tag == "Companion")
         {
-            other.GetComponent<SetCharacterStadistics>().Hp -= enemy1Stadistics.Damage;
+            other.GetComponent<SetCharacterStadistics>().ReceiveDamage(enemy1Stadistics.Damage);
         }
-        Debug.Log(other.tag);
     }
 }

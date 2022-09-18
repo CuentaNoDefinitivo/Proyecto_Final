@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6417279870017123202}
   - component: {fileID: 6417279870017123203}
   - component: {fileID: 4148713171664469530}
+  - component: {fileID: 7389460613056874322}
   m_Layer: 0
   m_Name: Weapon2
   m_TagString: Untagged
@@ -94,5 +95,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1bd5c3cde998a84c8e763b94c3e6630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangeWeaponStadistics: {fileID: 11400000, guid: ca8bc985bebba264b921b4d476bd36eb, type: 2}
+  weaponStadistics: {fileID: 11400000, guid: 8dd67aefe5d1d004e99453d36ca9483e, type: 2}
+  rangeWeaponStadistics: {fileID: 11400000, guid: 8dd67aefe5d1d004e99453d36ca9483e, type: 2}
   bullet: {fileID: 6599910445686254765, guid: 55da950f20d42764e974f271b36fe36f, type: 3}
+--- !u!95 &7389460613056874322
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6417279870017123206}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 6c1e654a33824d34bae6632476af3d7c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

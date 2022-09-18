@@ -20,9 +20,10 @@ public class EnemyBullet : MonoBehaviour
     {
         if (other.tag == "Prota" || other.tag == "Companion")
         {
-            other.GetComponent<SetCharacterStadistics>().Hp -= bulletStadistics.Damage;
+            other.GetComponent<SetCharacterStadistics>().ReceiveDamage(bulletStadistics.Damage);
             Destroy(gameObject);
         }
+        else if(other.tag != "NeutralMonster") Destroy(gameObject);
     }
     protected virtual void BulletMovement()
     {

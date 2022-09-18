@@ -126,4 +126,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21eba13f4dec9a7488e708eabfceb60c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletStadistics: {fileID: 11400000, guid: ca8bc985bebba264b921b4d476bd36eb, type: 2}
+  bulletStadistics: {fileID: 11400000, guid: 8dd67aefe5d1d004e99453d36ca9483e, type: 2}

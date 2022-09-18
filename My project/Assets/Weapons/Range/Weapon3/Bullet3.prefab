@@ -125,4 +125,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21eba13f4dec9a7488e708eabfceb60c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletStadistics: {fileID: 11400000, guid: 47814600170bd184fa7ddc19332d07af, type: 2}
+  bulletStadistics: {fileID: 11400000, guid: 9a344c2d1d8369e42820527081b15945, type: 2}

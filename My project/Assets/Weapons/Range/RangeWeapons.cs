@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-public class RangeWeapons : MonoBehaviour
+public class RangeWeapons : Weapon
 {
+    [SerializeField] protected RangeWeaponStadistics rangeWeaponStadistics;
+
     //Weapon Events
     public static event Action Reloading;
     public static event Action<float, float> ReloadingCount;
@@ -12,7 +14,6 @@ public class RangeWeapons : MonoBehaviour
 
     public static event Action<int,int> MunitionCount;
 
-    [SerializeField] protected WeaponStadistics rangeWeaponStadistics;
     [SerializeField] GameObject bullet;
     CharacterStadistic characterStadistics;
     protected int munitionCount;
@@ -26,10 +27,6 @@ public class RangeWeapons : MonoBehaviour
     protected void GetCharacterDamage()
     {
         characterStadistics = GetComponentInParent<SetCharacterStadistics>().CharacterStadistic;
-    }
-    protected void SetWeaponsStadistics()
-    {
-        transform.parent.parent.parent.GetComponent<Player>().WeaponStadistics = rangeWeaponStadistics;
     }
     protected void Reload()
     {

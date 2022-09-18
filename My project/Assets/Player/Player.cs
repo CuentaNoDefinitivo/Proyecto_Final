@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static Player Instance;
     //movement
     CharacterController cc;
     Vector3 MoveDirection;
@@ -12,27 +14,42 @@ public class Player : MonoBehaviour
     [SerializeField] LayerMask aimRaycast;
     Vector3 MousePosition;
 
+    //respawn;
+    float RespawnTime = 2f;
+    [SerializeField]Transform Respawner;
+
+
+
+    //---Characters---
     // characterRerefences and ChangeCharacter
     [SerializeField]GameObject prota;
-    GameObject companion;
+    [SerializeField]GameObject companion;
     bool canChange = true;
 
-    //alive
+    //character state
     public bool protaAlive { get; set; }
     public bool companionAlive { get; set; }
-    //CompanionScriptableObject
+    bool haveCompanion;
+
+    //ScriptableObject, stadistics
     public CharacterStadistic CharacterStadistics { get;  set; }
     public WeaponStadistics WeaponStadistics { get; set; }
+
+    //Animation
+    public Animator Animator { get; set; }
+    Vector3 animationDirection;
+    Vector3 localAnimationDirection;
+
+    //equipCompanion
+    public static event Action<GameObject> equipCompanion;
+    private void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
         cc = GetComponent<CharacterController>();
-        //GetProtaAndCompanionReferences && desactive companion active prota
-        companion = transform.GetChild(3).gameObject;
         protaAlive = true;
-        companionAlive = true;
-
-        prota.SetActive(true);
-        companion.SetActive(false);
     }
     void Update()
     {
@@ -42,23 +59,11 @@ public class Player : MonoBehaviour
             Move();
         }
 
-        if(Input.GetKeyDown(KeyCode.Tab) && canChange && protaAlive && companionAlive) ChangeCharacter(); // if tab && canChange then change.
-
-        //deathAlive Manager
-        if (protaAlive && !companionAlive) 
+        if (haveCompanion)
         {
-            prota.SetActive(true); 
-            companion.SetActive(false); 
+            if (Input.GetKeyDown(KeyCode.Tab) && canChange && protaAlive && companionAlive) ChangeCharacter(); // if tab && canChange then change.
         }
-        if(!protaAlive && companionAlive)
-        {
-            prota.SetActive(false);
-            companion.SetActive(true);
-        }
-        if (!companionAlive && !protaAlive)
-        {
-            gameObject.SetActive(false);
-        }
+        PlayerDeath();
     }
 
 
@@ -81,8 +86,15 @@ public class Player : MonoBehaviour
         MoveDirection = new Vector3(Input.GetAxisRaw("Horizontal"),0,Input.GetAxisRaw("Vertical")).normalized;
         if (MoveDirection.magnitude == 1) cc.Move(MoveDirection * CharacterStadistics.Speed * WeaponStadistics.Speed * Time.deltaTime);
 
+        animationDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
+        localAnimationDirection = transform.InverseTransformDirection(animationDirection);
+        //moveAnimation
+        Animator.SetFloat("Horizontal", localAnimationDirection.x);
+        Animator.SetFloat("Vertical", localAnimationDirection.z);
+
         //gravity
         if (transform.position.y > 1) cc.SimpleMove(Vector3.down * 5);
+        else if (transform.position.y < 1) transform.position = new Vector3(transform.position.x,1,transform.position.z);
     }
 
     //ChangeCharacters
@@ -96,5 +108,40 @@ public class Player : MonoBehaviour
     private void CanChange()
     {
         canChange = true;
+    }
+
+    //equip companion
+    public void EquipCompanion(GameObject companion)
+    {
+        equipCompanion?.Invoke(companion);
+
+        haveCompanion = true;
+        companionAlive = true;
+
+        prota.SetActive(false);
+        this.companion.SetActive(true);
+    }
+    
+    bool InvokeRespawn = false;
+    void PlayerDeath()
+    {
+        
+        if (!protaAlive && !companionAlive)
+        {
+            if (!InvokeRespawn)
+            {
+                Invoke("Respawn", RespawnTime);
+                InvokeRespawn = true;
+            }
+            transform.position = Vector3.Lerp(transform.position, Respawner.position, 1 * Time.deltaTime);
+        }
+    }
+    void Respawn()
+    {
+        protaAlive = true;
+        if (haveCompanion) companionAlive = true;
+        companion.SetActive(true);
+        prota.GetComponent<SetCharacterStadistics>().Respawn();
+        InvokeRespawn = false;
     }
 }

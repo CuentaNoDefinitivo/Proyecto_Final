@@ -17,5 +17,5 @@ MonoBehaviour:
   atackSpeed: 5
   hp: 40
   perceiveArea: 10
-  perceiveSpeed: 35
-  drops: []
+  drops:
+  - {fileID: 8792958659419143915, guid: 2aee37b12a10bc24a84616df5ede06da, type: 3}

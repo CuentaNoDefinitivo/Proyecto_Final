@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Enemy1 : Enemies
 {
     [SerializeField] Animator animator;
+
+    bool atacking = false;
     private void Start()
     {
         Hp = monsterStadistics.Hp;
+        MaxHp = monsterStadistics.Hp;
     }
     void Update()
     {
@@ -17,8 +21,8 @@ public class Enemy1 : Enemies
             Patrol();
         else
         {
-            //if ((preyPosition - transform.position).magnitude <= 1.3f) Atack(); // si se acerca a 1.3u ataca
-            Chase();
+            if ((preyPosition - transform.position).magnitude <= 1.3f && !atacking) { Atack(); atacking = true; }// si se acerca a 1.3u ataca
+            else if(!atacking) Chase(); //sino, perseguir
         }
 
         //Death
@@ -29,11 +33,20 @@ public class Enemy1 : Enemies
     }
     protected override void Atack()
     {
-        animator.SetBool("atack", true);
-        Invoke("ResetAtack",0.4f);
+        StartCoroutine("AtackAnimation");
     }
-    private void ResetAtack()
+    IEnumerator AtackAnimation()
     {
+        animator.SetBool("atack", true);
+        yield return new WaitForSeconds(1f);
         animator.SetBool("atack", false);
+        transform.LookAt(new Vector3(preyPosition.x,transform.position.y,preyPosition.z));
+        atacking = false;
+    }
+
+    protected override void Death()
+    {
+        base.Death();
+        Drop();
     }
 }

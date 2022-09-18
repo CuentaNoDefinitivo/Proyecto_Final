@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] WeaponStadistics bulletStadistics;
+    [SerializeField] RangeWeaponStadistics bulletStadistics;
     public CharacterStadistic CharacterStadistic { get; set; }
     void Start()
     {

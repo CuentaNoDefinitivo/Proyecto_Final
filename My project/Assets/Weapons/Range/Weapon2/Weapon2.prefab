@@ -96,8 +96,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponStadistics: {fileID: 11400000, guid: 8dd67aefe5d1d004e99453d36ca9483e, type: 2}
-  rangeWeaponStadistics: {fileID: 11400000, guid: 8dd67aefe5d1d004e99453d36ca9483e, type: 2}
   bullet: {fileID: 6599910445686254765, guid: 55da950f20d42764e974f271b36fe36f, type: 3}
+  rangeWeaponStadistics: {fileID: 11400000, guid: 8dd67aefe5d1d004e99453d36ca9483e, type: 2}
+  shotAudio: {fileID: 8300000, guid: 18d6a007b013c9d4ebf7f7c44e1e5f06, type: 3}
 --- !u!95 &7389460613056874322
 Animator:
   serializedVersion: 3

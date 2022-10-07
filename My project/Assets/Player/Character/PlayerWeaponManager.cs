@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerWeaponManager : MonoBehaviour
 {
@@ -44,28 +45,41 @@ public class PlayerWeaponManager : MonoBehaviour
             {
                 if (transform.GetChild(0).gameObject.activeSelf && haveWeapon2)
                 {
-                    transform.GetChild(0).gameObject.SetActive(false);
-                    transform.GetChild(1).gameObject.SetActive(true);
-                    melee.SetActive(false);
+                    ActiveWeapon2();
                 }
                 else if (!transform.GetChild(0).gameObject.activeSelf && haveWeapon1)
                 {
-                    transform.GetChild(0).gameObject.SetActive(true);
-                    transform.GetChild(1).gameObject.SetActive(false);
-                    melee.SetActive(false);
+                    ActiveWeapon1();
                 }
             } 
         
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                transform.GetChild(0).gameObject.SetActive(false);
-                transform.GetChild(1).gameObject.SetActive(false);
-                melee.SetActive(true);
+                ActiveMelee();
             }
         }
     }
+    void ActiveWeapon1()
+    {
+        melee.SetActive(false);
+        transform.GetChild(1).gameObject.SetActive(false);
 
+        transform.GetChild(0).gameObject.SetActive(true);
+    }
+    void ActiveWeapon2()
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
+        melee.SetActive(false);
+
+        transform.GetChild(1).gameObject.SetActive(true);
+    }
+    public void ActiveMelee()
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
+        transform.GetChild(1).gameObject.SetActive(false);
+        melee.SetActive(true);
+    }
     void HaveWeapon1()
     {
         if (weapons[0].transform.childCount == 1) haveWeapon1 = true;
@@ -78,7 +92,7 @@ public class PlayerWeaponManager : MonoBehaviour
     }
     public bool EquipWeapon(GameObject weapon, Sprite weaponSprite)
     {
-        if (!haveWeapon1 || !haveWeapon2)//si no tiene arma1 o no tiene arma2
+        if (!haveWeapon1 || !haveWeapon2)//si no tiene arma1 o no tiene arma2 // si no tiene dos armas
         {
             if (!haveWeapon1) EquipWeapon1(weapon, weaponSprite);
             else EquipWeapon2(weapon, weaponSprite);
@@ -107,17 +121,19 @@ public class PlayerWeaponManager : MonoBehaviour
         haveWeapon1 = true;
         Instantiate(weapon, weapons[0].transform);
         GetComponentInParent<SetAdcCharacterStadistics>().SetWeapon1Image(weaponSprite);
+        GetComponentInParent<SetCharacterStadistics>().InstanceCharacterHUD.transform.Find("Weapon1").GetComponent<Image>().sprite = weaponSprite;
 
-        //acrive weapon1
-        weapons[0].SetActive(true);
+        //active weapon1
         weapons[1].SetActive(false);
         melee.SetActive(false);
+        weapons[0].SetActive(true);
     }
     void EquipWeapon2(GameObject weapon, Sprite weaponSprite)
     {
         haveWeapon2 = true;
         Instantiate(weapon, weapons[1].transform);
         GetComponentInParent<SetAdcCharacterStadistics>().SetWeapon2Image(weaponSprite);
+        GetComponentInParent<SetCharacterStadistics>().InstanceCharacterHUD.transform.Find("Weapon2").GetComponent<Image>().sprite = weaponSprite;
     }
 
     public void UnequipWeapon(int weapon)

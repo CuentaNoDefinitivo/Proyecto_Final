@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SetCompanionStadistics : SetCharacterStadistics
+public class SetCompanionStadistics : MonoBehaviour
 {
     void Start()
     {
-        Player.equipCompanion += EquipCompanion;
+        Player.EquipCompanionEvent += EquipCompanion;
     }
-
+    
     void EquipCompanion(GameObject companion)
     {
         //DestroyAllChildren / destroy all companionS
@@ -17,7 +17,11 @@ public class SetCompanionStadistics : SetCharacterStadistics
             Destroy(child.gameObject);
         }
 
-        // InstantiateChildren
+        // InstantiateCompanionToChildren
         Instantiate(companion,transform);
+    }
+    private void OnDestroy()
+    {
+        Player.EquipCompanionEvent -= EquipCompanion;
     }
 }

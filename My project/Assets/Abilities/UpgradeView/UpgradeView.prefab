@@ -43,7 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2997c8c890d3d11458e4e7dbd3c63d11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  increaseView: 9
-  abilityDuration: 10
-  cooldown: 15
-  upgradeViewIcon: {fileID: 21300000, guid: b0cf8b2bffd44c64ba1e08565f3e4eab, type: 3}
+  cameraController: {fileID: 0}

@@ -28,12 +28,12 @@ public class SetADCCompanionStadistics : SetCharacterStadistics
     }
     protected override void SetHUDImage()
     {
-        hud.transform.Find("Pasive").GetComponent<Image>().sprite = pasiveImage;
-        hud.transform.Find("Ability1").GetComponent<Image>().sprite = ability1Image;
-        hud.transform.Find("Ability2").GetComponent<Image>().sprite = ability2Image;
+        characterHudReference.transform.Find("Pasive").GetComponent<Image>().sprite = pasiveImage;
+        characterHudReference.transform.Find("Ability1").GetComponent<Image>().sprite = ability1Image;
+        characterHudReference.transform.Find("Ability2").GetComponent<Image>().sprite = ability2Image;
 
-        hud.transform.Find("Melee").GetComponent<Image>().sprite = meleeImage;
-        hud.transform.Find("Weapon1").GetComponent<Image>().sprite = weapon1Image;
-        hud.transform.Find("Weapon2").GetComponent<Image>().sprite = weapon2Image;
+        characterHudReference.transform.Find("Melee").GetComponent<Image>().sprite = meleeImage;
+        characterHudReference.transform.Find("Weapon1").GetComponent<Image>().sprite = weapon1Image;
+        characterHudReference.transform.Find("Weapon2").GetComponent<Image>().sprite = weapon2Image;
     }
 }

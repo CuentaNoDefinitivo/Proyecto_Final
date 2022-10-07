@@ -29,6 +29,7 @@ public class CharacterAnimation : MonoBehaviour
     }
     private void SetPlayerAnimator()
     {
-        transform.parent.GetComponent<Player>().Animator = animator;
+        if(CompareTag("Prota")) transform.parent.GetComponent<Player>().Animator = animator;
+        else transform.parent.parent.GetComponent<Player>().Animator = animator;
     }
 }

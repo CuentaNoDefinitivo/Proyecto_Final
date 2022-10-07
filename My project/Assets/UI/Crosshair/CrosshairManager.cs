@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class CrosshairManager : MonoBehaviour
 {
-    public static CrosshairManager Instance { get; private set; }
+    public static CrosshairManager Instance { get; private set; } //esto es porque hay unos scripts que quieren acceder a la variable Image.
     Animator crosshairAnimator;
-    [SerializeField]public Image image;
-    
+    public Image Image { get; private set; }
+
     private void Awake()
     {
         Instance = this;
@@ -16,12 +16,13 @@ public class CrosshairManager : MonoBehaviour
         if (Cursor.visible) Cursor.visible = false;
 
         TryGetComponent<Animator>(out crosshairAnimator);
+        Image = GetComponent<Image>();
 
         Weapon.sniperCrosshair += CrosshairType;
     }
     private void Start()
     {
-        image.color = SettingsManager.Instance.CrosshairColor;
+        Image.color = SettingsManager.Instance.CrosshairColor;
     }
     void Update()
     {
@@ -31,43 +32,41 @@ public class CrosshairManager : MonoBehaviour
     //crosshairAnimation
     void CrosshairType(bool state)
     {
+        //esto es porque hay armas de rango que va a llamar estos eventos y armas de melee que no necesita estos eventos.
         if (state == true)
         {
             RangeWeapons.Reloading += Reloading;
             RangeWeapons.StopReloading += Reloaded;
             RangeWeapons.MunitionCount += MunitionCount;
         }
-        else
+        else if (crosshairAnimator != null)
         {
             crosshairAnimator.SetFloat("Munition", 1);
             RangeWeapons.Reloading -= Reloading;
             RangeWeapons.StopReloading -= Reloaded;
             RangeWeapons.MunitionCount -= MunitionCount;
         }
-        
+
     }
 
 
     void Reloading()
     {
-        crosshairAnimator.SetBool("Reloading", true);
-        //image.color = SettingsManager.Instance.ReloadCrosshairColor;
+        if (crosshairAnimator != null) crosshairAnimator?.SetBool("Reloading", true);
     }
     void Reloaded()
     {
-        crosshairAnimator.SetBool("Reloading", false);
-        //image.color = SettingsManager.Instance.CrosshairColor;
+        if (crosshairAnimator != null) crosshairAnimator?.SetBool("Reloading", false);
     }
     void MunitionCount(int munitionCount, int maxMunition)
     {
-        crosshairAnimator.SetFloat("Munition", munitionCount);
-        //if (munitionCount == 0) image.color = SettingsManager.Instance.NoMunitionCrosshairColor;
-        //else image.color = SettingsManager.Instance.CrosshairColor;
+        if (crosshairAnimator != null) crosshairAnimator?.SetFloat("Munition", munitionCount);
     }
     private void OnDestroy()
     {
         RangeWeapons.Reloading -= Reloading;
         RangeWeapons.StopReloading -= Reloaded;
         RangeWeapons.MunitionCount -= MunitionCount;
+        Weapon.sniperCrosshair -= CrosshairType;
     }
 }

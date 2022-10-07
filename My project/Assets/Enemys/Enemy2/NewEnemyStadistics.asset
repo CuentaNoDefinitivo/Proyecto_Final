@@ -15,7 +15,9 @@ MonoBehaviour:
   speed: 5
   damage: 10
   atackSpeed: 0.7
-  hp: 40
+  hp: 45
   perceiveArea: 10
   drops:
   - {fileID: 2321163978046556085, guid: be798d142eb6f3847bc18998c03de281, type: 3}
+  - {fileID: 5287046668213816184, guid: 8eabdd005f8e4b44dac67b2df59f3912, type: 3}
+  - {fileID: 836511966575652932, guid: d5d77dbcdffa5a54d97b24066062c975, type: 3}

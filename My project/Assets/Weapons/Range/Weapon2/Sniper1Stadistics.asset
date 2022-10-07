@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Sniper1Stadistics
   m_EditorClassIdentifier: 
   speed: 0.6
-  damage: 10
+  damage: 40
+  timeBetweenAtacks: 0.7
   munition: 5
   reloadTime: 2.5
   bulletLifeTime: 4

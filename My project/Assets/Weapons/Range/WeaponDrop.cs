@@ -6,6 +6,7 @@ public class WeaponDrop : MonoBehaviour
 {
     [SerializeField]GameObject weapon;
     [SerializeField] Sprite weaponSprite;
+    [SerializeField]GameObject takeWeaponTutorial;
     
     void Start()
     {
@@ -24,5 +25,13 @@ public class WeaponDrop : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player"))takeWeaponTutorial.SetActive(true);
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.CompareTag("Player"))takeWeaponTutorial.SetActive(false);
     }
 }

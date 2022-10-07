@@ -6,16 +6,17 @@ public class KnifeMovement : MonoBehaviour
 {
     [SerializeField] float maxFlightTime = 0.3f;
     [SerializeField] float speed = 30;
-
-
-    //public List<Transform> daggerListReference;
+    [SerializeField] CharacterStadistic characterStadistic;
 
     float time = 0;
     float fallingSpeed = 5;
 
+    bool hability2Actived = false;
+    public Transform companion2Reference;
     private void Start()
     {
-        //Invoke("DestroyDagge", 2f);
+        Destroy(gameObject, 20f);
+        Companion2.Companion2Hability2 += Hability2Actived;
     }
     void Update()
     {
@@ -31,12 +32,31 @@ public class KnifeMovement : MonoBehaviour
             {
                 transform.position += Vector3.down * fallingSpeed * Time.deltaTime;
             }
-            else DestroyImmediate(this);
+        }
+        if (hability2Actived) hability2();
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "NeutralMonster")
+        {
+            other.GetComponent<Enemies>().Hp -= characterStadistic.Damage;
         }
     }
-    /*void DestroyDagge()
+    void Hability2Actived()
     {
-        Destroy(gameObject);
-        daggerListReference.RemoveAt(0);
-    }*/
+        hability2Actived = true;
+    }
+    void hability2()
+    {
+        if (Mathf.Round(transform.position.x * 100) != Mathf.Round(companion2Reference.position.x * 100) && Mathf.Round(transform.position.y * 100) != Mathf.Round(companion2Reference.position.y * 100) && Mathf.Round(transform.position.z * 100) != Mathf.Round(companion2Reference.position.z * 100))
+        {
+            transform.LookAt(companion2Reference);
+            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        }
+        else DestroyImmediate(gameObject);
+    }
+    private void OnDestroy()
+    {
+        Companion2.Companion2Hability2 -= Hability2Actived;
+    }
 }

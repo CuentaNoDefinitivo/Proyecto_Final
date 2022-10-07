@@ -14,7 +14,11 @@ public class HUDMunitionCount : MonoBehaviour
     }
     void SetMunitionCountText(int munitionCount,int munition)
     {
-        textMeshPro.text = munitionCount + " / " + munition;
+        if(munitionCount == 0 && munition == 0)
+        {
+            textMeshPro.text = "";
+        }
+        else textMeshPro.text = munitionCount + " / " + munition;
     }
     void SetMunitionCountText(float reloadCount, float reloadTime)
     {

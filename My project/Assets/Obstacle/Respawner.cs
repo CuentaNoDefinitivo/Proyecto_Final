@@ -16,6 +16,5 @@ public class Respawner : MonoBehaviour
                 time = 0;
             }
         }
-        Debug.Log(other.tag);
     }
 }

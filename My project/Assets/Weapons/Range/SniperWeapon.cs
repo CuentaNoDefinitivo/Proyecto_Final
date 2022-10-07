@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SniperWeapon : RangeWeapons
 {
-    bool canShot = true;
-    bool reloading = false;
     
     private void Start()
     {
@@ -18,35 +16,14 @@ public class SniperWeapon : RangeWeapons
     private void Update()
     {
         //disparar
-        if (Input.GetKeyDown(KeyCode.Mouse0) && canShot && munitionCount > 0)
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Shot();//disparar
-
-            //tiempo entre disparo
-            canShot = false;
-            Invoke("CanShot", 0.7f);
-
-            //stop reload and reset reload properties
-            reloading = false;
-            reloadTimeCount = 0;
-            InvokeStopReloading();
-
-            InvokeMunitionCount(munitionCount, rangeWeaponStadistics.Munition);
+            Shot();
         }
 
         //Reload.
         if (Input.GetKey(KeyCode.R) && munitionCount < rangeWeaponStadistics.Munition)   reloading = true;
-        if (reloading)
-        {
-            Reload();
-            if (munitionCount == rangeWeaponStadistics.Munition) 
-            { 
-                reloading = false;
-                InvokeStopReloading();
-                InvokeMunitionCount(munitionCount, rangeWeaponStadistics.Munition);
-            }
-        }
-        //NoMunition
+        Reload();
         
     }
     private void OnEnable()
@@ -63,9 +40,7 @@ public class SniperWeapon : RangeWeapons
 
         //Reset CrosshairEvents
         InvokeStopReloading();
-    }
-    void CanShot()
-    {
-        canShot = true;
+
+        InvokeMunitionCount(0, 0);
     }
 }

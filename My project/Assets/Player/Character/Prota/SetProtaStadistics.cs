@@ -15,8 +15,6 @@ public class SetProtaStadistics : SetAdcCharacterStadistics
     void Awake()
     {
         SetProperties();
-        HpChanged += SetHUDBar;
-        HpChanged += LowHpEfects;
         HpChanged += Dead;
     }
     private void OnEnable()
@@ -31,11 +29,15 @@ public class SetProtaStadistics : SetAdcCharacterStadistics
     }
     protected override void SetHUDImage()
     {
-        if(Ability1Image !=null ) hud.transform.Find("Ability1").GetComponent<Image>().sprite = Ability1Image;
-        if (Ability2Image != null) hud.transform.Find("Ability2").GetComponent<Image>().sprite = Ability2Image;
+        if(Ability1Image !=null ) characterHudReference.transform.Find("Ability1").GetComponent<Image>().sprite = Ability1Image;
+        if (Ability2Image != null) characterHudReference.transform.Find("Ability2").GetComponent<Image>().sprite = Ability2Image;
 
-        if (MeleeImage != null) hud.transform.Find("Melee").GetComponent<Image>().sprite = MeleeImage;
-        if (Weapon1Image != null) hud.transform.Find("Weapon1").GetComponent<Image>().sprite = Weapon1Image;
-        if (Weapon2Image != null) hud.transform.Find("Weapon1").GetComponent<Image>().sprite = Weapon2Image;
+        if (MeleeImage != null) characterHudReference.transform.Find("Melee").GetComponent<Image>().sprite = MeleeImage;
+        if (Weapon1Image != null) characterHudReference.transform.Find("Weapon1").GetComponent<Image>().sprite = Weapon1Image;
+        if (Weapon2Image != null) characterHudReference.transform.Find("Weapon1").GetComponent<Image>().sprite = Weapon2Image;
+    }
+    private void OnDestroy()
+    {
+        HpChanged -= Dead;
     }
 }

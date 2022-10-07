@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
     Vector3 localAnimationDirection;
 
     //equipCompanion
-    public static event Action<GameObject> equipCompanion;
+    public static event Action<GameObject> EquipCompanionEvent;
     private void Awake()
     {
         Instance = this;
@@ -113,7 +113,7 @@ public class Player : MonoBehaviour
     //equip companion
     public void EquipCompanion(GameObject companion)
     {
-        equipCompanion?.Invoke(companion);
+        EquipCompanionEvent?.Invoke(companion);
 
         haveCompanion = true;
         companionAlive = true;
@@ -141,6 +141,7 @@ public class Player : MonoBehaviour
         protaAlive = true;
         if (haveCompanion) companionAlive = true;
         companion.SetActive(true);
+        prota.SetActive(true);
         prota.GetComponent<SetCharacterStadistics>().Respawn();
         transform.position = Respawner.position;
         InvokeRespawn = false;

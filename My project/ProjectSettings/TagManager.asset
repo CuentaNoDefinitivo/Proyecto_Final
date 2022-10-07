@@ -16,6 +16,8 @@ TagManager:
   - Weapon1
   - Weapon2
   - Hand
+  - Ability1
+  - Ability2
   layers:
   - Default
   - TransparentFX
@@ -40,7 +42,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - MinimapIcon
   - Drops
   - PostProcessing
   - Character
